@@ -21,7 +21,7 @@ app.get("/api/pottery", async (_req, res) => {
   // 用 _req 避免 TS6133
   const prisma = new PrismaClient();
   try {
-    const pottery = await prisma.pottery.findMany();
+    const pottery = await prisma.vpottery.findMany();
     res.json(pottery);
   } catch (error) {
     console.error(error);
