@@ -1,36 +1,33 @@
+// src/index.ts
+
 import express from "express";
-import cors from "cors";
 import dotenv from "dotenv";
-import passport from "passport";
-import authRouter from "./auth";
-import { PrismaClient } from "@prisma/client";
+import cors from "cors";
+import authRoutes from "./routes/auth";
 
 dotenv.config();
 
 const app = express();
+const port = process.env.PORT || 3000;
 
-// Middlewares
-app.use(cors());
+// 中介軟體
+app.use(cors({ origin: process.env.FRONTEND_URL }));
 app.use(express.json());
-app.use(passport.initialize());
 
-// Routes
-app.use("/auth", authRouter);
-
-app.get("/api/pottery", async (_req, res) => {
-  // 用 _req 避免 TS6133
-  const prisma = new PrismaClient();
-  try {
-    const pottery = await prisma.vpottery.findMany();
-    res.json(pottery);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
-  } finally {
-    await prisma.$disconnect();
-  }
+// 路由
+// highlight-start
+app.get("/", (_req, res) => {
+  res.json({
+    message: "歡迎來到 vPottery API！",
+    status: "運行中",
+    documentation: "請參考 Postman 或相關文件來測試 API 端點。",
+  });
 });
+// highlight-end
 
-// Server
-const PORT = process.env.PORT || 3006;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.use("/api/auth", authRoutes);
+
+// 啟動伺服器
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});

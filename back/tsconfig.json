@@ -4,7 +4,7 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "rootDir": ".",
-    "outDir": "./dist",
+    "outDir": "dist",
     "sourceMap": true,
     "strict": true,
     "esModuleInterop": true,
@@ -14,13 +14,8 @@
     "noUnusedParameters": true,
     "types": ["node"],
     "ignoreDeprecations": "6.0"
+
   },
-  "include": [
-    "src/**/*.ts",
-    "prisma/seed.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["src", "prisma/seed.ts"],
+  "exclude": ["node_modules", "dist"]
 }

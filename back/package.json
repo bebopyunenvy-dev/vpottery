@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "start": "ts-node-dev src/index.ts",
-    "seed": "ts-node-dev prisma/seed.ts",
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts"
-  },
+ "scripts": {
+  "dev": "nodemon --exec ts-node -r dotenv/config src/index.ts",
+  "start": "ts-node src/index.ts",
+  "seed": "ts-node prisma/seed.ts"
+}
+,
   "keywords": [],
   "author": "",
   "license": "ISC",
