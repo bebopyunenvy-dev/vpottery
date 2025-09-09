@@ -20,7 +20,7 @@ app.get("/", (_req, res) => {
   res.json({
     message: "歡迎來到 vPottery API！",
     status: "運行中",
-    documentation: "請參考 Postman 或相關文件來測試 API 端點。",
+    documentation: "請參考 Postman等相關文件來測試 API 端點。",
   });
 });
 // highlight-end
