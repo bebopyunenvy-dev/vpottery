@@ -9,7 +9,14 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    // ----- 新增或修改這裡 -----
+    "baseUrl": ".", // 必須設定 baseUrl，paths 才會生效
+    "paths": {
+      "@/*": ["src/*"] // 將 "@/*" 映射到 "src/*"
+    }
+    // ----------------------------
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/.vue"]
 }
